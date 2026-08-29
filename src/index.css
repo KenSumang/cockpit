@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+    /* COLOR PALETTE */
+    --color-black-main: #161719;
+    --color-black-light: #1d1e20;
+    --color-secondary: #848484;
+    --color-highlight: #D9D9D9;
+
+
+    /* INSIDE SHADOW */
+    --shadow-layered-in-md:
+        inset 2px 3px 5px rgba(0, 0, 0, 0.25),
+        inset -3px -3px 5px rgba(255, 255, 255, 0.11);
+
+
+    /* OUTSIDE SHADOW */
+    --shadow-layered-out-md:
+        2px 3px 5px rgba(0, 0, 0, 0.04),
+        4px 4px 10px rgba(0, 0, 0, 0.25),
+        -2px -2px 6px rgba(255, 255, 255, 0.05),
+        -4px -4px 8px rgba(255, 255, 255, 0.07);
+    
+    --shadow-layered-out-lg:
+        /* shadow */
+        10px 10px 8px rgba(0, 0, 0, 0.16),
+        14px 14px 8px rgba(0, 0, 0, 0.14),
+        16px 16px 22px rgba(0, 0, 0, 0.15),
+        /* highlight */
+        /* -3px -3px 8px rgba(255, 255, 255, 0.02),
+        -8px -8px 14px rgba(255, 255, 255, 0.06),
+        -14px -14px 18px rgba(255, 255, 255, 0.02); */
+        
+        -6px -6px 6px rgba(255, 255, 255, 0.02),
+        -10px -10px 8px rgba(255, 255, 255, 0.03),
+        -16px -16px 16px rgba(255, 255, 255, 0.02);
+}
