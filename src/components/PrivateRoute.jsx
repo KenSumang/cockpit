@@ -10,6 +10,7 @@ function PrivateRoute ({ children }) {
     supabase.auth.getSession().then(({ data: {session} }) => {
         setAuthenticated(!!session)
         setLoading(false);
+        console.log(session)
     });
   }, []);
 
