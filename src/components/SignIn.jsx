@@ -30,52 +30,55 @@ const SignIn = () => {
     };
 
     return(
-        <div className="w-[500px] h-[600px] m-auto rounded-2xl bg-black-light shadow-layered-out-lg">
-            <form onSubmit={handleSignIn} className="max-w-md m-auto pt-24">
-                <h2 className="font-bold pb-2">Sign in</h2>
+        <section className="w-full h-dvh">
+            <div className="container max-w-full h-full px-4 sm:px-6 flex">
+                <div className="wrapper w-full h-full my-auto lg:flex">
+                    <div className="px-6 lg:w-[500px] lg:h-[600px] lg:m-auto rounded-2xl lg:bg-black-light lg:shadow-layered-out-xl">
+                        <form onSubmit={handleSignIn} className="max-w-md m-auto pt-58 lg:pt-32 lg:px-12 lg:mx-auto flex flex-col">
 
-                <p>
-                    Don't have an account? <Link to="/signup">Sign up!</Link>
-                </p>
+                            <h2 className="font-bold pb-2 text-[24px] lg:text-[28px]">Sign in</h2>
 
-                <div className="flex flex-col py-4">
-                    <input
-                        className="p-3 mt-6 shadow-layered-in-md rounded-2xl"
-                        id="email"
-                        type="email"
-                        autoComplete="false"
-                        name="email"
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                            <p>
+                                Don't have an account? <Link to="/signup" className="text-gray-300 hover:text-gray-400">
+                                    Sign up!
+                                </Link>
+                            </p>
 
-                    <div>
-                        <input
-                            className="p-3 mt-6 shadow-layered-in-md rounded-2xl"
-                            id="password"
-                            // type={showPassword ? "text" : "password"}
-                            type="password"
-                            placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                            <div className="flex flex-col gap-2 py-4">
+                                <input
+                                    className="p-3 mt-6 shadow-layered-in-md rounded-2xl"
+                                    id="email"
+                                    type="email"
+                                    autoComplete="false"
+                                    name="email"
+                                    placeholder="Email"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
 
-                        {/* <button
-                            onClick="">
-                            Show Password
-                        </button> */}
+                                <input
+                                    className="p-3 mt-6 shadow-layered-in-md rounded-2xl"
+                                    id="password"
+                                    // type={showPassword ? "text" : "password"}
+                                    type="password"
+                                    placeholder="Password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+
+                                <button
+                                    className="p-3 mt-10 shadow-layered-out-md rounded-2xl text-gray-300 hover-cursor hover:bg-black-highlight hover:shadow-layered-highlight-md transition duration-300"
+                                    type="submit"
+                                    >
+                                    Sign In
+                                </button>
+                            </div>
+                        </form>
+                        {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+                        
                     </div>
 
-                    <button
-                        className="p-3 mt-6 shadow-layered-out-md rounded-2xl hover-cursor"
-                        type="submit"
-                    >
-                        Sign In
-                    </button>
                 </div>
-            </form>
-            {error && <p className="text-red-600 text-center pt-4">{error}</p>}
-            
-        </div>
+            </div>
+        </section>
     );
 };
 

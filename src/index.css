@@ -4,6 +4,7 @@
     /* COLOR PALETTE */
     --color-black-main: #161719;
     --color-black-light: #1d1e20;
+    --color-black-highlight: #1c1d1fff;
     --color-secondary: #848484;
     --color-highlight: #D9D9D9;
 
@@ -12,7 +13,6 @@
     --shadow-layered-in-md:
         inset 2px 3px 5px rgba(0, 0, 0, 0.25),
         inset -3px -3px 5px rgba(255, 255, 255, 0.11);
-
 
     /* OUTSIDE SHADOW */
     --shadow-layered-out-md:
@@ -43,4 +43,30 @@
         6px 6px 4px rgba(0, 0, 0, 0.16),
         10px 10px 4px rgba(0, 0, 0, 0.14),
         12px 12px 8px rgba(0, 0, 0, 0.15);
+
+    --shadow-layered-out-xl:
+        /* highlight */
+        -6px -6px 6px rgba(255, 255, 255, 0.02),
+        -10px -10px 8px rgba(255, 255, 255, 0.03),
+        -16px -16px 16px rgba(255, 255, 255, 0.02),
+        
+        /* shadow */
+        10px 10px 8px rgba(0, 0, 0, 0.16),
+        14px 14px 8px rgba(0, 0, 0, 0.14),
+        16px 16px 22px rgba(0, 0, 0, 0.15);
+
+        /* HIGHLIGHT SHADOWS */
+    --shadow-layered-highlight-md:
+        inset 3px 4px 6px rgba(255, 255, 255, 0.05),
+        inset 4px 4px 8px rgba(255, 255, 255, 0.07),
+        inset -4px -4px 6px rgba(0, 0, 0, 0.04),
+        inset -6px -6px 8px rgba(0, 0, 0, 0.25),
+        2px 3px 5px rgba(0, 0, 0, 0.04),
+        4px 4px 10px rgba(0, 0, 0, 0.25),
+        -2px -2px 6px rgba(255, 255, 255, 0.05),
+        -4px -4px 8px rgba(255, 255, 255, 0.07);
+
+    
+    --font-geist: "Geist Mono", monospace;
+    --font-urbanist: "Urbanist", sans-serif;
 }
