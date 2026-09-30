@@ -10,13 +10,6 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         let isMounted = true;
 
-        // supabase.auth.getSession().then(({ data }) => {
-        //     if (!isMounted) return;
-        //     console.log('[Auth] initiatl getSession:', data.session);
-        //     setSession(data.session);
-        //     setLoading(false);
-        // });
-
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
             setSession(newSession);
             setLoading(false);
