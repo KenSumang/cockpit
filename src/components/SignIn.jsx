@@ -31,11 +31,11 @@ const SignIn = () => {
 
     return(
         <section className="w-full h-dvh">
-            <div className="container max-w-full h-full px-4 sm:px-6 flex">
-                <div className="wrapper w-full h-full my-auto lg:flex">
+            <div className="container max-w-full h-full">
+                <div className="wrapper w-full h-full flex">
                     <form
                         onSubmit={handleSignIn}
-                        className="max-w-md flex flex-col py-8 px-6 justify-center lg:w-[580px] lg:h-[600px] lg:m-auto rounded-2xl lg:bg-black-light lg:shadow-layered-out-xl">
+                        className="flex flex-col py-8 px-14 m-auto w-[450px] justify-center h-dvh lg:w-[500px] lg:h-[600px]  lg:rounded-2xl lg:bg-black-light lg:shadow-layered-out-xl">
 
                         <h2 className="font-bold pb-2 text-[24px] lg:text-[28px]">Sign in</h2>
 
@@ -66,7 +66,7 @@ const SignIn = () => {
                             />
 
                             <button
-                                className="p-3 mt-10 shadow-layered-out-md rounded-2xl text-gray-300 hover-cursor hover:bg-black-highlight hover:shadow-layered-highlight-md transition duration-300"
+                                className="p-3 mt-20 shadow-layered-out-md rounded-2xl text-gray-300 lg:mt-15 hover-cursor hover:bg-black-highlight hover:shadow-layered-highlight-md transition duration-300"
                                 type="submit"
                                 >
                                 Sign In
