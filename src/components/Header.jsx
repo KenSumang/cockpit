@@ -9,7 +9,7 @@ function Header({}) {
 
     return (
         <header class="header h-full w-full">
-            <div class="container max-w-full px-4 pb-2 pt-4 sm:px-5 sm:pb-2.5 sm:pt-5">
+            <div class="container max-w-full">
                 <div className="header_wrapper">
                     <div className="header_contents w-full h-full flex justify-between">
                        
