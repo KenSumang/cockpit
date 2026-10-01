@@ -4,7 +4,7 @@ import { UserAuth } from '../context/AuthContext';
 import SettingsIcon from '../assets/settings.avif';
 import UserIcon from '../assets/user.avif';
 
-function Header({}) {
+function Header({ onMenuClick }) {
   const { session } = UserAuth();
 
     return (
@@ -34,6 +34,7 @@ function Header({}) {
                                 <img
                                     src= {session.usericon ? session.usericon : UserIcon}
                                     alt="User Profile Picture"
+                                    onClick={onMenuClick}
                                 />
                             </button>
                         </div>
