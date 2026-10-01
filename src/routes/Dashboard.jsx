@@ -11,7 +11,7 @@ function Dashboard () {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   const handleSideNavButton = () => {
-      setIsSideNavOpen((prev) => !prev);
+    setIsSideNavOpen((prev) => !prev);
   };
 
   const handleSignOut = async (e) => {
@@ -30,15 +30,9 @@ function Dashboard () {
       <SideNav isOpen={isSideNavOpen} onClose={() => setIsSideNavOpen(false)} />
 
       <div className="header_dashboard h-full w-full flex flex-col gap-4">
-        <Header onMenuClick={handleSideNavButton} />
+        <Header onMenuClick={handleSideNavButton} onSignOut={handleSignOut} />
         <div className="dashboard w-[calc(100%-24px)] h-100 w-full flex items-center justify-between rounded-2xl bg-black-light shadow-layered-out-lg">
           <Notes/>
-          <button
-            onClick={handleSignOut}
-            className="hover:cursor-pointer inline-block w-[10rem] px-4 py-3 mt-4 shadow-layered-out-md rounded-xl my-auto"
-          >
-            Sign Out
-          </button>
         </div>
       </div>
     </div>
