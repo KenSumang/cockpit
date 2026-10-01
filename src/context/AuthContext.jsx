@@ -7,6 +7,7 @@ export const AuthContextProvider = ({ children }) => {
     const [session, setSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // User Mounting
     useEffect(() => {
         let isMounted = true;
 
