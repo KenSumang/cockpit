@@ -11,7 +11,7 @@ import Menu from '../assets/menu.avif';
 //     );
 // }
 
-function Header({ onMenuClick, onSignOut }) {
+function Header ({ onMenuClick, onSignOut }) {
   const { session } = UserAuth();
   const [isAccountSettingsOpen, setIsAccountSettingsOpen] = useState(false);
 
