@@ -4,6 +4,7 @@ import { UserAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
 import DashBoardPanel from '../components/DashboardPanel';
+import StatsPanel from '../components/StatsPanel';
 
 function Dashboard () {
   const { session, signOut } = UserAuth();
@@ -33,6 +34,7 @@ function Dashboard () {
       <div className="header_dashboard h-full w-full flex flex-col gap-4">
         <Header onMenuClick={handleSideNavButton} onSignOut={handleSignOut} />
         <DashBoardPanel activePanel={activePanel} />
+        <StatsPanel activePanel={activePanel} />
       </div>
     </div>
   );
