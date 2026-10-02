@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import SideNav from '../components/SideNav';
 import DashBoardPanel from '../components/DashboardPanel';
 import StatsPanel from '../components/StatsPanel';
+import TrackerPanel from '../components/TrackerPanel';
 
 function Dashboard () {
   const { session, signOut } = UserAuth();
@@ -35,6 +36,7 @@ function Dashboard () {
         <Header onMenuClick={handleSideNavButton} onSignOut={handleSignOut} />
         <DashBoardPanel activePanel={activePanel} />
         <StatsPanel activePanel={activePanel} />
+        <TrackerPanel activePanel={activePanel} />
       </div>
     </div>
   );
