@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../assets/Logo_Text.avif';
 
 const linkClass = ({ isActive }) =>
-  `block rounded-xl py-3 text-center ${
-    isActive ? "shadow-layered-in" : "shadow-layered-out-sm"
-}`;
+    `hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
+        isActive && "shadow-layered-in-md"
+}`; 
 
 function SideNav ({ isOpen, onClose }) {
 
@@ -40,41 +40,9 @@ function SideNav ({ isOpen, onClose }) {
                             />
 
                             <div className="nav flex flex-col gap-4 mt-12 mx-6">
-                                
-
                                 <NavLink to="/dashboard" className={linkClass} onClick={onClose}>Dashboard</NavLink>
                                 <NavLink to="/stats" className={linkClass} onClick={onClose}>Stats</NavLink>
                                 <NavLink to="/tracker" className={linkClass} onClick={onClose}>Tracker</NavLink>
-                                {/* <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "dashboard" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("dashboard")}
-                                >
-                                    <p>Dashboard</p>
-                                </button>
-                                <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "stats" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("stats")}
-                                >
-                                    <p>Stats</p>
-                                </button>
-                                <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "tracker" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("tracker")}
-                                >
-                                    <p>Tracker</p>
-                                </button>
-                                <button
-                                    onClick={onClose}
-                                    className="hover:cursor-pointer inline-block w-full px-4 py-3 my-2 shadow-layered-out-md rounded-xl my-auto md:hidden"
-                                >
-                                    <p>Close</p>
-                                </button> */}
                             </div>
                         </div>
                     </div>

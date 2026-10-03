@@ -3,9 +3,6 @@ import { useNavigate, Outlet } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
-import DashBoardPanel from '../components/DashboardPanel';
-import StatsPanel from '../components/StatsPanel';
-import TrackerPanel from '../components/TrackerPanel';
 
 function AppLayout () {
   const { session, signOut } = UserAuth();
@@ -35,9 +32,6 @@ function AppLayout () {
       <div className="header_dashboard h-full w-full flex flex-col gap-4">
         <Header onMenuClick={handleSideNavButton} onSignOut={handleSignOut} />
         <Outlet />
-        {/* <DashBoardPanel activePanel={activePanel} />
-        <StatsPanel activePanel={activePanel} />
-        <TrackerPanel activePanel={activePanel} /> */}
       </div>
     </div>
   );
