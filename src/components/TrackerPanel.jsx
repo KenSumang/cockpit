@@ -1,10 +1,8 @@
 import Notes from '../components/Notes';
 
-function TrackerPanel ({ activePanel}) {
+function TrackerPanel () {
     return (
-        <div className={`tracker w-[calc(100%-24px)] h-100 w-full items-center justify-between rounded-2xl bg-black-light shadow-layered-out-lg ${
-            activePanel === "tracker" ? "flex" : "hidden"
-        }`}>
+        <div className="tracker w-[calc(100%-24px)] h-100 w-full items-center justify-between rounded-2xl bg-black-light shadow-layered-out-lg">
             <h2>Tracker</h2>
             <Notes/>
         </div>

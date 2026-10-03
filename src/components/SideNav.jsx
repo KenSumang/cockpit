@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react'
-
+import { NavLink } from 'react-router-dom';
 import Logo from '../assets/Logo_Text.avif';
 
-function SideNav ({ isOpen, onClose, activePanel, setActivePanel}) {
+const linkClass = ({ isActive }) =>
+  `block rounded-xl py-3 text-center ${
+    isActive ? "shadow-layered-in" : "shadow-layered-out-sm"
+}`;
+
+function SideNav ({ isOpen, onClose }) {
+
+    useEffect(() => {
+        if (!isOpen) return;
+        const onKey = (e) => e.key === "Escape" && onClose();
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [isOpen, onClose]);
 
     return (
         <>
@@ -29,7 +41,11 @@ function SideNav ({ isOpen, onClose, activePanel, setActivePanel}) {
 
                             <div className="nav flex flex-col gap-4 mt-12 mx-6">
                                 
-                                <button
+
+                                <NavLink to="/dashboard" className={linkClass} onClick={onClose}>Dashboard</NavLink>
+                                <NavLink to="/stats" className={linkClass} onClick={onClose}>Stats</NavLink>
+                                <NavLink to="/tracker" className={linkClass} onClick={onClose}>Tracker</NavLink>
+                                {/* <button
                                     className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
                                         activePanel === "dashboard" && "shadow-layered-in-md"
                                     }`}
@@ -58,7 +74,7 @@ function SideNav ({ isOpen, onClose, activePanel, setActivePanel}) {
                                     className="hover:cursor-pointer inline-block w-full px-4 py-3 my-2 shadow-layered-out-md rounded-xl my-auto md:hidden"
                                 >
                                     <p>Close</p>
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>
