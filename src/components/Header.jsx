@@ -6,11 +6,6 @@ import SettingsIcon from '../assets/settings.avif';
 import UserIcon from '../assets/user.avif';
 import Menu from '../assets/menu.avif';
 
-// function AccountSettings() {
-//     return (
-//     );
-// }
-
 function Header ({ onMenuClick, onSignOut }) {
   const { session } = UserAuth();
   const [isAccountSettingsOpen, setIsAccountSettingsOpen] = useState(false);

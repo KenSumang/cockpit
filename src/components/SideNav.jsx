@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react'
-
+import { NavLink } from 'react-router-dom';
 import Logo from '../assets/Logo_Text.avif';
 
-function SideNav ({ isOpen, onClose, activePanel, setActivePanel}) {
+const linkClass = ({ isActive }) =>
+    `hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
+        isActive && "shadow-layered-in-md"
+}`; 
+
+function SideNav ({ isOpen, onClose }) {
+
+    useEffect(() => {
+        if (!isOpen) return;
+        const onKey = (e) => e.key === "Escape" && onClose();
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [isOpen, onClose]);
 
     return (
         <>
@@ -28,37 +40,9 @@ function SideNav ({ isOpen, onClose, activePanel, setActivePanel}) {
                             />
 
                             <div className="nav flex flex-col gap-4 mt-12 mx-6">
-                                
-                                <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "dashboard" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("dashboard")}
-                                >
-                                    <p>Dashboard</p>
-                                </button>
-                                <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "stats" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("stats")}
-                                >
-                                    <p>Stats</p>
-                                </button>
-                                <button
-                                    className={`hover:cursor-pointer inline-block w-full px-4 py-3 my-2 rounded-xl my-auto ${
-                                        activePanel === "tracker" && "shadow-layered-in-md"
-                                    }`}
-                                    onClick={() => setActivePanel("tracker")}
-                                >
-                                    <p>Tracker</p>
-                                </button>
-                                <button
-                                    onClick={onClose}
-                                    className="hover:cursor-pointer inline-block w-full px-4 py-3 my-2 shadow-layered-out-md rounded-xl my-auto md:hidden"
-                                >
-                                    <p>Close</p>
-                                </button>
+                                <NavLink to="/dashboard" className={linkClass} onClick={onClose}>Dashboard</NavLink>
+                                <NavLink to="/stats" className={linkClass} onClick={onClose}>Stats</NavLink>
+                                <NavLink to="/tracker" className={linkClass} onClick={onClose}>Tracker</NavLink>
                             </div>
                         </div>
                     </div>
