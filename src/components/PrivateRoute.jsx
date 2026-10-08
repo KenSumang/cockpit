@@ -17,7 +17,7 @@ function PrivateRoute ({ children }) {
 
   if (loading) {
     return (
-      <div className="loading_screen w-full h-full">
+      <div className="loading_screen w-full h-svh flex">
           <img
               src={LogoSmall}
               alt="Cockpit Logo"
