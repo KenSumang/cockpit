@@ -35,7 +35,6 @@ function SideNav ({ isOpen, onClose }) {
                 ${isOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
             />
             <nav
-                // className={`side_nav fixed top-0 left-0 z-40 h-svh w-1/4 min-w-[220px] max-w-[300px]
                 className={`side_nav fixed top-0 left-0 z-40 h-svh max-w-[300px]
                     rounded-2xl bg-black-light shadow-layered-highlight
                     transition-transform duration-300 ease-out will-change-transform

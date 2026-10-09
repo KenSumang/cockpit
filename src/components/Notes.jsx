@@ -35,7 +35,7 @@ function Notes() {
     
     async function handleSubmit(e) {
         e.preventDefault();
-        if (!title.trim() && !useContext.trim()) return;
+        if (!title.trim() && !content.trim()) return;
 
         setSaving(true);
         setError(null);
@@ -70,11 +70,11 @@ function Notes() {
     }
 
     return(
-        <div>
-            <h1>Notes</h1>
+        <div className="shadow-layered-out-lg rounded-2xl bg-black-light p-6">
+            <h2 className="text-white text-[22px] tracking-wide font-bold">Notes</h2>
 
             <form onSubmit={handleSubmit}>
-                <h2>Add note</h2>
+                <h2 className="text-white text-[16px] tracking-wide font-bold">Add Note</h2>
 
                 <label htmlFor="note-title">Note Title</label>
                 <input
@@ -105,24 +105,29 @@ function Notes() {
 
             {error && <p role="alert">{error}</p>}
 
-            {loading ? (
-                <p>Loading Notes...</p>
-            ) : notes.length === 0 ?(
-                <p>No notes found.</p>
-            ) : (
-                notes.map(note => (
-                <div key={note.id}>
-                    <h2>{note.title}</h2>
-                    <p>{note.description}</p>
-                    <button
-                        className="hover:cursor-pointer inline-block px-4 py-3 shadow-layered-out-md rounded-xl my-auto"
-                        onClick={() => handleDelete(note.id)}
+            <div className="notes flex flex-col gap-5 mt-6">
+                {loading ? (
+                    <p>Loading Notes...</p>
+                ) : notes.length === 0 ?(
+                    <p>No notes found.</p>
+                ) : (
+                    notes.map(note => (
+                    <div
+                        key={note.id}
+                        className="rounded-2xl flex gap-4 justify-between h-20 items-center bg-black-light shadow-layered-out-lg p-4"
                     >
-                        Delete
-                    </button>
-                </div>
-                ))
-            )}
+                        <h2 className="">{note.title}</h2>
+                        <p>{note.description}</p>
+                        <button
+                            className="hover:cursor-pointer inline-block px-4 py-3 shadow-layered-out-md rounded-xl my-auto"
+                            onClick={() => handleDelete(note.id)}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                    ))
+                )}
+            </div>
         </div>
     );
 }
