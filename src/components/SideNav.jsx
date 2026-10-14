@@ -35,7 +35,7 @@ function SideNav ({ isOpen, onClose }) {
             />
             <nav
                 className={`side_nav fixed top-0 left-0 z-40 h-svh max-w-[300px]
-                    rounded-2xl bg-black-light shadow-layered-highlight
+                    rounded-2xl bg-black-light shadow-layered-highlight p-2
                     transition-transform duration-300 ease-out will-change-transform
                     ${isOpen ? "translate-x-4" : "-translate-x-[calc(50%)] -translate-x-full"}
                     ${isSideNavMax ? "w-1/4" : "w-fit"}
@@ -46,27 +46,28 @@ function SideNav ({ isOpen, onClose }) {
                         <div className="nav flex flex-col">
 
                             <NavLink to="/dashboard" className={linkClass} onClick={onClose}>
-                                <DashboardIcon className="w-4 md:w-5 shrink-0 -z-1" />
+                                <DashboardIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
                                 <span className={`text-[16px] font-semibold ${isSideNavMax ? "block" : "hidden"}`}>Dashboard</span>
                             </NavLink>
 
                             <NavLink to="/stats" className={linkClass} onClick={onClose}>
-                                <StatsIcon className="w-4 md:w-5 shrink-0 -z-1" />
+                                <StatsIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
                                 <span className={`text-[16px] font-semibold ${isSideNavMax ? "block" : "hidden"}`}>Stats</span>
                             </NavLink>
 
                             <NavLink to="/tracker" className={linkClass} onClick={onClose}>
-                                <TrackerIcon className="w-4 md:w-5 shrink-0 -z-1" />
+                                <TrackerIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
                                 <span className={`text-[16px] font-semibold ${isSideNavMax ? "block" : "hidden"}`}>Tracker</span>
                             </NavLink>
-
                         </div>
 
-                        <button className={`inline-block mt-auto bg-red-200 ${linkClass}`} onClick={handleSideNavMax}>
-                            <MaximizeIcon className="w-4 shrink-0 bg-blue-200" />
-                            <span className={`text-[16px] bg-green-200 font-semibold ${isSideNavMax ? "block" : "hidden"}`}>Maximize</span>
+                        <button
+                            className={`flex gap-3 items-center rounded-xl h-12 w-fit mt-auto text-[#ADADAD] hover:text-white hover:cursor-pointer transition duration-300 ${
+                            isSideNavMax ? "px-3 ml-auto" : "px-3.5"
+                        }`}
+                            onClick={handleSideNavMax}>
+                            <MaximizeIcon className="w-4 md:w-5 shrink-0 h-fit" />
                         </button>
-
                     </div>
                 </div>
             </nav>
