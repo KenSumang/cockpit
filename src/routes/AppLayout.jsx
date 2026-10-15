@@ -25,10 +25,10 @@ function AppLayout () {
   };
 
   return (
-    <div className="h-full w-full relative flex p-4 gap-4 sm:p-6 overflow-x-hidden">
+    <div className="h-dvh w-full relative flex px-4 gap-4 sm:px-6 overflow-x-hidden">
       <SideNav isOpen={isSideNavOpen} onClose={handleSideNavButton} />
 
-      <div className="header_dashboard h-full w-full flex flex-col gap-4">
+      <div className="header_dashboard h-full w-full flex flex-col overflow-y-auto scrollbar-none gap-4 py-4 sm:py-6">
         <Header onMenuClick={handleSideNavButton} onSignOut={handleSignOut} />
         <Outlet />
       </div>

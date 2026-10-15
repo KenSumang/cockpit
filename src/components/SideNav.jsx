@@ -34,9 +34,9 @@ function SideNav ({ isOpen, onClose }) {
                 ${isOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
             />
             <nav
-                className={`side_nav fixed top-0 left-0 z-40 h-svh max-w-[300px]
+                className={`side_nav fixed top-0 left-0 z-40 max-w-[300px]
                     rounded-2xl bg-black-light shadow-layered-highlight p-2
-                    transition-transform duration-300 ease-out will-change-transform
+                    transition-transform duration-300 ease-out will-change-transform my-4 sm:my-6
                     ${isOpen ? "translate-x-4" : "-translate-x-[calc(50%)] -translate-x-full"}
                     ${isSideNavMax ? "w-1/4" : "w-fit"}
                     md:static md:translate-x-0 md:mr-2 md:shadow-layered-out-lg`}>
