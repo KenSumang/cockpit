@@ -88,19 +88,22 @@ function Notes() {
                 className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300
                 ${noteOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
             />
-            <div className="shadow-layered-out-lg rounded-2xl bg-black-light p-6">
-                <h2 className="text-white text-[22px] tracking-wide font-bold">Notes</h2>
+            {/* <div className="shadow-layered-out-lg rounded-2xl bg-black-light p-6"> */}
+            <div className="shadow-layered-out-lg rounded-2xl min-w-120 max-w-130 bg-black-light p-6">
+                <div className="notes_title_add flex justify-between">
+                    <h2 className="text-white text-[24px] tracking-wide font-bold">Notes</h2>
 
-                <button
-                    className="hover:cursor-pointer inline-block w-fit px-7 py-3 shadow-layered-out-md rounded-xl my-auto"
-                    onClick={() => handleSetNoteOpen()}
-                >
-                    Add Note
-                </button>
+                    <button
+                        className="hover:cursor-pointer inline-block w-fit px-7 py-3 shadow-layered-out-md rounded-xl my-auto"
+                        onClick={() => handleSetNoteOpen()}
+                    >
+                        Add Note
+                    </button>
+                </div>
                 
                 <form
                     onSubmit={handleSubmit}
-                    className={`flex flex-col gap-4 z-60 pt-4 bg-black-light shadow-layered-highlight rounded-xl p-4 w-3/4 max-w-200 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${
+                    className={`flex flex-col gap-4 z-60 pt-4 bg-black-light shadow-layered-highlight rounded-xl p-4 w-3/4 max-w-180 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${
                         noteOpen ? "absolute" : "hidden"
                 }`}>
                     <button
@@ -110,27 +113,25 @@ function Notes() {
                         Cancel
                     </button>
 
-                    <h2 className="text-white text-[16px] tracking-wide font-bold">Add Note</h2>
+                    <h2 className="text-white text-[20px] tracking-wide font-bold">New Note</h2>
 
                     <div className="title flex flex-col gap-2">
-                        <label htmlFor="note-title">Title</label>
                         <input
                             id="note-title"
                             type="text"
                             className="p-3 shadow-layered-in-md rounded-xl my-auto"
-                            placeholder="Enter note title"
+                            placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
 
                     <div className="content flex flex-col gap-2">
-                        <label htmlFor="note-content">Content</label>
                         <textarea
                             id="note-content"
                             type="richtext"
                             className="p-3 shadow-layered-in-md rounded-xl my-auto"
-                            placeholder="Enter note"
+                            placeholder="Write Something"
                             rows="5"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
@@ -163,26 +164,29 @@ function Notes() {
                 </div>
 
                 <div className="notes flex flex-col gap-5 mt-6">
+                    <h2 className="text-white text-[20px] tracking-wide font-bold">Your Notes</h2>
                     {loading ? (
                         <p>Loading Notes...</p>
                     ) : notes.length === 0 ?(
                         <p>No notes found.</p>
                     ) : (
                         notes.map(note => (
-                        <div
+                        <article
                             key={note.id}
-                            className="rounded-2xl flex gap-4 justify-between h-20 items-center bg-black-light shadow-layered-out-lg p-4"
+                            className="rounded-2xl flex flex-col gap-4 justify-between items-center bg-black-light shadow-layered-out-md p-4 text-wrap"
                             // onClick=
                         >
-                            <h2 className="">{note.title}</h2>
-                            <p>{note.description}</p>
-                            <button
-                                className="hover:cursor-pointer inline-block px-4 py-3 shadow-layered-out-md rounded-xl my-auto"
-                                onClick={() => handleDelete(note.id)}
-                            >
-                                Delete
-                            </button>
-                        </div>
+                            <div className="note_title w-full flex justify-between">
+                                <h2 className="font-semibold first-letter:uppercase">{note.title}</h2>
+                                <button
+                                    className="hover:cursor-pointer inline-block  px-4 py-3 shadow-layered-out-md rounded-xl my-auto"
+                                    onClick={() => handleDelete(note.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                            <p className="first-letter:uppercase w-full">{note.description}</p>
+                        </article>
                         ))
                     )}
                 </div>
