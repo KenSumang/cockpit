@@ -36,10 +36,13 @@ function SideNav ({ isOpen, onClose }) {
             <nav
                 className={`side_nav fixed top-0 left-0 z-40 max-w-[300px]
                     rounded-2xl bg-black-light shadow-layered-highlight p-2
-                    transition-transform duration-300 ease-out will-change-transform my-4 sm:my-6
+                    ease-out will-change-transform my-4 sm:my-6
+                    md:static md:translate-x-0 md:mr-2 md:shadow-layered-out-lg
+                    /* 1. Added transition properties for the sidebar size */
+                    transition-[transform,width] duration-300
                     ${isOpen ? "translate-x-4" : "-translate-x-[calc(50%)] -translate-x-full"}
-                    ${isSideNavMax ? "w-1/4" : "w-fit"}
-                    md:static md:translate-x-0 md:mr-2 md:shadow-layered-out-lg`}>
+                    ${isSideNavMax ? "w-[240px]" : "w-[64px]"} `}> 
+
                 <div className="container h-full">
                     <div className="side_nav_contents flex flex-col h-full">
 
@@ -49,6 +52,14 @@ function SideNav ({ isOpen, onClose }) {
                                 <DashboardIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
                                 <span className={`text-[16px] font-semibold ${isSideNavMax ? "block" : "hidden"}`}>Dashboard</span>
                             </NavLink>
+
+                            {/* <NavLink to="/dashboard" className={linkClass} onClick={onClose}>
+                                <DashboardIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
+                                <div className={`overflow-hidden transition-all duration-300 ease-out whitespace-nowrap
+                                    ${isSideNavMax ? "w-32 opacity-100 ml-2" : "w-0 opacity-0 ml-0"}`}>
+                                    <span className="text-[16px] font-semibold">Dashboard</span>
+                                </div>
+                            </NavLink> */}
 
                             <NavLink to="/stats" className={linkClass} onClick={onClose}>
                                 <StatsIcon className="w-4 md:w-5 shrink-0 h-fit -z-1" />
