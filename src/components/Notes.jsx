@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../utils/supabase';
 import { UserAuth } from '../context/AuthContext';
+import DeleteIcon from '../assets/trash.svg?react';
 
 function Notes() {
     const { session } = UserAuth();
@@ -14,6 +15,14 @@ function Notes() {
     const [content, setContent] = useState('');
     const [noteOpen, setNoteOpen] = useState(false);
     const [noteItemOpen, setNoteItemOpen] = useState(false);
+    
+    const PAGE_SIZE = 5;
+    const [page, setPage] = useState(1);
+
+    const totalPages = Math.max(1, Math.ceil(notes.length / PAGE_SIZE));
+    const currentPage = Math.min(page, totalPages); // clamps if the last note on a page is deleted
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const visibleNotes = notes.slice(start, start + PAGE_SIZE);
 
     const handleSetNoteOpen = () => {
         setNoteOpen((prev) => !prev);
@@ -89,7 +98,7 @@ function Notes() {
                 ${noteOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
             />
             {/* <div className="shadow-layered-out-lg rounded-2xl bg-black-light p-6"> */}
-            <div className="shadow-layered-out-lg rounded-2xl min-w-120 max-w-130 bg-black-light p-6">
+            <div className="shadow-layered-out-lg rounded-2xl lg:min-w-120 max-w-130 bg-black-light p-6">
                 <div className="notes_title_add flex justify-between">
                     <h2 className="text-white text-[24px] tracking-wide font-bold">Notes</h2>
 
@@ -97,7 +106,7 @@ function Notes() {
                         className="hover:cursor-pointer inline-block w-fit px-7 py-3 shadow-layered-out-md rounded-xl my-auto"
                         onClick={() => handleSetNoteOpen()}
                     >
-                        Add Note
+                        Take a note
                     </button>
                 </div>
                 
@@ -167,28 +176,54 @@ function Notes() {
                     <h2 className="text-white text-[20px] tracking-wide font-bold">Your Notes</h2>
                     {loading ? (
                         <p>Loading Notes...</p>
-                    ) : notes.length === 0 ?(
+                        ) : notes.length === 0 ? (
                         <p>No notes found.</p>
-                    ) : (
-                        notes.map(note => (
-                        <article
-                            key={note.id}
-                            className="rounded-2xl flex flex-col gap-4 justify-between items-center bg-black-light shadow-layered-out-md p-4 text-wrap"
-                            // onClick=
-                        >
-                            <div className="note_title w-full flex justify-between">
-                                <h2 className="font-semibold first-letter:uppercase">{note.title}</h2>
-                                <button
-                                    className="hover:cursor-pointer inline-block  px-4 py-3 shadow-layered-out-md rounded-xl my-auto"
-                                    onClick={() => handleDelete(note.id)}
+                        ) : (
+                        <>
+                            {visibleNotes.map(note => (
+                                <article
+                                    key={note.id}
+                                    className="rounded-2xl flex flex-col gap-4 justify-between items-center bg-black-light shadow-layered-out-md p-4 text-wrap"
                                 >
-                                    Delete
+                                    <div className="note_title w-full flex justify-between items-center">
+                                        <h2 className="font-semibold first-letter:uppercase">{note.title}</h2>
+                                    </div>
+                                    <p className="first-letter:uppercase w-full">{note.description}</p>
+                                    
+                                    <button
+                                        className="hover:cursor-pointer inline-block p-2.5 shadow-layered-out-md rounded-xl ml-auto"
+                                        onClick={() => handleDelete(note.id)}
+                                    >
+                                        <DeleteIcon className="w-4 h-4" />
+                                    </button>
+                                </article>
+                            ))}
+
+                            {totalPages > 1 && (
+                            <nav aria-label="Notes pagination" className="flex items-center justify-between gap-4">
+                                <button
+                                    onClick={() => setPage(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className="rounded-xl px-4 py-2 shadow-layered-out-md disabled:opacity-40 disabled:shadow-none"
+                                    >
+                                Prev
                                 </button>
-                            </div>
-                            <p className="first-letter:uppercase w-full">{note.description}</p>
-                        </article>
-                        ))
-                    )}
+
+                                <span className="text-[#ADADAD]">
+                                    Page {currentPage} of {totalPages}
+                                </span>
+
+                                <button
+                                    onClick={() => setPage(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                    className="rounded-xl px-4 py-2 shadow-layered-out-md disabled:opacity-40 disabled:shadow-none"
+                                    >
+                                    Next
+                                </button>
+                            </nav>
+                            )}
+                        </>
+                        )}
                 </div>
             </div>
         </>
